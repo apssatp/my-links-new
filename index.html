@@ -22,79 +22,120 @@
         <div class="max-w-7xl mx-auto px-4 py-3 sm:py-4">
             <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                 
-                <!-- Left: Official AP Government Emblem -->
+                <!-- Left: Exact Andhra Pradesh Government Official Emblem (రాజముద్ర - Raja Mudra) -->
                 <div class="flex items-center justify-center shrink-0">
-                    <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center p-1 rounded-full bg-white border-2 border-emerald-600 shadow-md">
-                        <!-- High Fidelity Official Government of Andhra Pradesh State Seal -->
-                        <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-sm" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Outer Green Ring with Decorative Beads -->
-                            <circle cx="100" cy="100" r="96" fill="#ffffff" stroke="#15803d" stroke-width="4.5" />
-                            <circle cx="100" cy="100" r="91" fill="none" stroke="#ca8a04" stroke-width="2" stroke-dasharray="3,2.5" />
-                            <circle cx="100" cy="100" r="87" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5" />
+                    <a href="https://share.google/faChGk6BSRtLimAW0" target="_blank" rel="noopener noreferrer" class="w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center p-1 bg-white relative block" title="Government of Andhra Pradesh Official Emblem">
+                        
+                        <img 
+                            id="apOfficialLogoImg"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Emblem_of_Andhra_Pradesh_before_2014.svg/500px-Emblem_of_Andhra_Pradesh_before_2014.svg.png"
+                            alt="Government of Andhra Pradesh Official Emblem"
+                            class="w-full h-full object-contain select-none drop-shadow-sm"
+                            referrerpolicy="no-referrer"
+                            loading="eager"
+                            onerror="handleLogoError(this)"
+                        />
+
+                        <!-- High-Precision Full Vector Fallback (Active only if all remote image links are offline) -->
+                        <svg id="apDetailedSvgFallback" viewBox="0 0 500 560" class="hidden w-full h-full drop-shadow-sm select-none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <path id="curveGovTextF" d="M 58,250 A 192,192 0 1,1 442,250" fill="none" />
+                                <path id="curveTelTextF" d="M 68,260 A 190,190 0 0,0 205,420" fill="none" />
+                                <path id="curveHinTextF" d="M 295,420 A 190,190 0 0,0 432,260" fill="none" />
+                                <path id="curveMottoTextF" d="M 120,490 Q 250,565 380,490" fill="none" />
+                            </defs>
+
+                            <circle cx="250" cy="250" r="236" fill="#ffffff" stroke="#008c45" stroke-width="8" />
+                            <circle cx="250" cy="250" r="224" fill="none" stroke="#008c45" stroke-width="3" />
                             
-                            <!-- Sun Rays Pattern radiating inward -->
-                            <g stroke="#15803d" stroke-width="1.2" opacity="0.6">
-                                <line x1="100" y1="13" x2="100" y2="22" />
-                                <line x1="100" y1="178" x2="100" y2="187" />
-                                <line x1="13" y1="100" x2="22" y2="100" />
-                                <line x1="178" y1="100" x2="187" y2="100" />
-                                <line x1="38" y1="38" x2="45" y2="45" />
-                                <line x1="155" y1="155" x2="162" y2="162" />
-                                <line x1="38" y1="162" x2="45" y2="155" />
-                                <line x1="162" y1="38" x2="155" y2="45" />
-                            </g>
+                            <!-- Decorative Wave & Bead Garland Ring -->
+                            <circle cx="250" cy="250" r="168" fill="none" stroke="#008c45" stroke-width="14" stroke-dasharray="12,6" />
+                            <circle cx="250" cy="250" r="156" fill="none" stroke="#008c45" stroke-width="3" stroke-dasharray="4,5" />
+                            <circle cx="250" cy="250" r="146" fill="#ffffff" stroke="#008c45" stroke-width="3" />
+                            <circle cx="250" cy="250" r="140" fill="none" stroke="#008c45" stroke-width="2.5" stroke-dasharray="3,4" />
 
-                            <!-- Circular Bilingual Inscription Paths -->
-                            <!-- Top Curve for Telugu: ఆంధ్రప్రదేశ్ ప్రభుత్వము -->
-                            <path id="apTeluguCurve" d="M 32,100 A 68,68 0 1,1 168,100" fill="none" />
-                            <text class="text-[12px] font-black fill-emerald-800 tracking-wider" text-anchor="middle">
-                                <textPath href="#apTeluguCurve" startOffset="50%">ఆంధ్రప్రదేశ్ ప్రభుత్వము</textPath>
+                            <!-- TEXT: GOVERNMENT OF ANDHRA PRADESH -->
+                            <text class="text-[26px] font-black fill-[#008c45] tracking-[0.12em]" style="font-family: 'Inter', Arial, sans-serif; font-weight: 900;" text-anchor="middle">
+                                <textPath href="#curveGovTextF" startOffset="50%">GOVERNMENT OF ANDHRA PRADESH</textPath>
                             </text>
 
-                            <!-- Bottom Curve for English: GOVERNMENT OF ANDHRA PRADESH -->
-                            <path id="apEnglishCurve" d="M 166,108 A 68,68 0 0,1 34,108" fill="none" />
-                            <text class="text-[9.5px] font-bold fill-emerald-900 tracking-widest uppercase" text-anchor="middle">
-                                <textPath href="#apEnglishCurve" startOffset="50%">GOVERNMENT OF ANDHRA PRADESH</textPath>
+                            <circle cx="55" cy="256" r="7.5" fill="#008c45" />
+                            <circle cx="445" cy="256" r="7.5" fill="#008c45" />
+
+                            <!-- TEXT: ఆంధ్ర ప్రదేశ్ -->
+                            <text class="text-[28px] font-black fill-[#008c45]" style="font-family: system-ui, sans-serif; font-weight: 900;" text-anchor="middle">
+                                <textPath href="#curveTelTextF" startOffset="50%">ఆంధ్ర ప్రదేశ్</textPath>
                             </text>
 
-                            <!-- Inner Amaravati Dhamma Chakka & Purna Kalasa Medallion -->
-                            <circle cx="100" cy="100" r="54" fill="#ffffff" stroke="#ca8a04" stroke-width="2.5" />
-                            <circle cx="100" cy="100" r="50" fill="#fefce8" stroke="#15803d" stroke-width="1.5" />
+                            <!-- TEXT: आंध्र प्रदेश -->
+                            <text class="text-[28px] font-black fill-[#008c45]" style="font-family: system-ui, sans-serif; font-weight: 900;" text-anchor="middle">
+                                <textPath href="#curveHinTextF" startOffset="50%">आंध्र प्रदेश</textPath>
+                            </text>
 
-                            <!-- Traditional Purna Kumbham / Ghataka (Sacred Kalasha) -->
-                            <!-- Foliage / Mango leaves on top of Kalasa -->
-                            <path d="M 100,56 C 94,62 88,68 86,74 C 94,73 99,67 100,64 C 101,67 106,73 114,74 C 112,68 106,62 100,56 Z" fill="#15803d" />
-                            <path d="M 100,54 L 100,64" stroke="#ca8a04" stroke-width="2" stroke-linecap="round" />
-                            <!-- Coconut (Purna fruit) on top -->
-                            <ellipse cx="100" cy="67" rx="8" ry="7" fill="#854d0e" stroke="#ca8a04" stroke-width="1.2" />
-
-                            <!-- Kalasha Vessel Body with ornate traditional contours -->
-                            <path d="M 85,74 C 85,74 88,78 90,80 L 80,95 C 77,105 82,120 100,122 C 118,120 123,105 120,95 L 110,80 C 112,78 115,74 115,74 Z" fill="#ca8a04" stroke="#854d0e" stroke-width="1.5" />
-                            <!-- Kalasha Decorative Middle Girdle (Mekhala) -->
-                            <path d="M 82,97 C 88,103 112,103 118,97" fill="none" stroke="#ffffff" stroke-width="2.5" />
-                            <path d="M 85,103 C 90,108 110,108 115,103" fill="none" stroke="#15803d" stroke-width="2" />
-                            <!-- Base Pedestal of Kalasha -->
-                            <path d="M 90,121 L 110,121 L 114,127 L 86,127 Z" fill="#854d0e" stroke="#ca8a04" stroke-width="1" />
-
-                            <!-- Ashoka Lion Capital (Sarnath Emblem at base) -->
-                            <g transform="translate(100, 134) scale(0.65)">
-                                <!-- Center Ashoka Wheel -->
-                                <circle cx="0" cy="8" r="7" fill="#ffffff" stroke="#1e3a8a" stroke-width="1.5" />
-                                <circle cx="0" cy="8" r="1.5" fill="#1e3a8a" />
-                                <line x1="0" y1="1" x2="0" y2="15" stroke="#1e3a8a" stroke-width="0.8" />
-                                <line x1="-7" y1="8" x2="7" y2="8" stroke="#1e3a8a" stroke-width="0.8" />
-                                <line x1="-5" y1="3" x2="5" y2="13" stroke="#1e3a8a" stroke-width="0.8" />
-                                <line x1="-5" y1="13" x2="5" y2="3" stroke="#1e3a8a" stroke-width="0.8" />
-                                <!-- Base Platform -->
-                                <rect x="-18" y="15" width="36" height="3.5" rx="1" fill="#ca8a04" />
+                            <!-- 36 Dense Golden Sunburst Rays (Exact Match to Original) -->
+                            <g stroke="#c69c53" stroke-width="6.5" stroke-linecap="round">
+                                <line x1="250" y1="125" x2="250" y2="175" /><line x1="250" y1="325" x2="250" y2="375" />
+                                <line x1="125" y1="250" x2="175" y2="250" /><line x1="325" y1="250" x2="375" y2="250" />
+                                <line x1="162" y1="162" x2="197" y2="197" /><line x1="303" y1="303" x2="338" y2="338" />
+                                <line x1="338" y1="162" x2="303" y2="197" /><line x1="197" y1="303" x2="162" y2="338" />
+                                <line x1="218" y1="129" x2="231" y2="177" /><line x1="269" y1="323" x2="282" y2="371" />
+                                <line x1="282" y1="129" x2="269" y2="177" /><line x1="231" y1="323" x2="218" y2="371" />
+                                <line x1="129" y1="218" x2="177" y2="231" /><line x1="323" y1="269" x2="371" y2="282" />
+                                <line x1="129" y1="282" x2="177" y2="269" /><line x1="323" y1="231" x2="371" y2="218" />
+                                <line x1="187" y1="142" x2="212" y2="185" /><line x1="288" y1="315" x2="313" y2="358" />
+                                <line x1="313" y1="142" x2="288" y2="185" /><line x1="212" y1="315" x2="187" y2="358" />
+                                <line x1="142" y1="187" x2="185" y2="212" /><line x1="315" y1="288" x2="358" y2="313" />
+                                <line x1="142" y1="313" x2="185" y2="288" /><line x1="315" y1="212" x2="358" y2="187" />
                             </g>
 
-                            <!-- Satyameva Jayate Inscription in Telugu below Kalasha -->
-                            <text x="100" y="150" class="text-[7.5px] font-extrabold fill-slate-900" text-anchor="middle">
-                                సత్యమేవ జయతే
+                            <!-- Inner Medallion Ring -->
+                            <circle cx="250" cy="250" r="70" fill="#ffffff" stroke="#008c45" stroke-width="4" />
+                            <circle cx="250" cy="250" r="64" fill="none" stroke="#008c45" stroke-width="2" stroke-dasharray="3,3" />
+
+                            <!-- Authentic Purna Kumbham -->
+                            <g fill="#008c45">
+                                <path d="M242,196 C236,204 234,212 238,218 L262,218 C266,212 264,204 258,196 C253,202 247,202 242,196 Z" />
+                                <path d="M236,214 C216,208 202,220 202,236 C214,226 226,222 238,222 Z" />
+                                <path d="M264,214 C284,208 298,220 298,236 C286,226 274,222 262,222 Z" />
+                                <rect x="228" y="220" width="44" height="10" rx="4" />
+                                <path d="M222,232 C206,244 206,274 222,290 L278,290 C294,274 294,244 278,232 Z" />
+                                <rect x="224" y="292" width="52" height="9" rx="4" />
+                                <path d="M222,258 Q250,270 278,258" fill="none" stroke="#ffffff" stroke-width="4" />
+                                <circle cx="236" cy="242" r="3" fill="#ffffff" />
+                                <circle cx="250" cy="244" r="3" fill="#ffffff" />
+                                <circle cx="264" cy="242" r="3" fill="#ffffff" />
+                                <circle cx="238" cy="276" r="3.5" fill="#ffffff" />
+                                <circle cx="250" cy="278" r="3.5" fill="#ffffff" />
+                                <circle cx="262" cy="276" r="3.5" fill="#ffffff" />
+                            </g>
+
+                            <!-- Detailed Crimson Red Ashoka Lion Capital (Raja Mudra) -->
+                            <g transform="translate(195, 326)">
+                                <!-- Abacus Base -->
+                                <rect x="10" y="106" width="90" height="24" rx="4" fill="#d91920" stroke="#ffffff" stroke-width="1.5" />
+                                <rect x="4" y="126" width="102" height="7" rx="3" fill="#d91920" />
+                                <!-- Center Dharma Chakra -->
+                                <circle cx="55" cy="118" r="10" fill="#ffffff" stroke="#d91920" stroke-width="2" />
+                                <circle cx="55" cy="118" r="8" fill="none" stroke="#d91920" stroke-width="1.2" />
+                                <g stroke="#d91920" stroke-width="1">
+                                    <line x1="55" y1="110" x2="55" y2="126" /><line x1="47" y1="118" x2="63" y2="118" />
+                                    <line x1="49" y1="112" x2="61" y2="124" /><line x1="49" y1="124" x2="61" y2="112" />
+                                </g>
+                                <!-- Left & Right Lions + Center Lion -->
+                                <path d="M18,42 C8,42 4,54 10,68 C16,80 22,94 24,106 L86,106 C88,94 94,80 100,68 C106,54 102,42 92,42 C86,36 78,36 74,42 C72,24 64,16 55,16 C46,16 38,24 36,42 C32,36 24,36 18,42 Z" fill="#d91920" stroke="#ffffff" stroke-width="1.5" />
+                                <!-- Facial / Mane Details in White -->
+                                <circle cx="50" cy="30" r="2" fill="#ffffff" /><circle cx="60" cy="30" r="2" fill="#ffffff" />
+                                <path d="M48,38 Q55,44 62,38" fill="none" stroke="#ffffff" stroke-width="2" />
+                                <path d="M42,52 Q55,62 68,52 M40,64 Q55,74 70,64 M42,76 Q55,86 68,76" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+                                <path d="M34,78 L34,105 M46,82 L46,105 M64,82 L64,105 M76,78 L76,105" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" />
+                            </g>
+
+                            <!-- Motto: सत्यमेव जयते -->
+                            <text class="text-[36px] font-black fill-[#008c45] tracking-[0.06em]" style="font-family: system-ui, sans-serif; font-weight: 900;" text-anchor="middle">
+                                <textPath href="#curveMottoTextF" startOffset="50%">सत्यमेव जयते</textPath>
                             </text>
                         </svg>
-                    </div>
+                    </a>
                 </div>
 
                 <!-- Center: Official Department Headings & Live Real-Time Clock -->
@@ -110,14 +151,14 @@
                     </p>
                     
                     <!-- Official Real-time Digital Clock -->
-                    <div class="inline-flex items-center gap-2 mt-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-300 text-slate-700 text-xs font-semibold shadow-inner">
+                    <div class="inline-flex items-center gap-2 mt-2 px-3.5 py-1 rounded-full bg-slate-100 border border-slate-300 text-slate-700 text-xs font-semibold shadow-inner">
                         <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-600 animate-pulse"></i>
                         <span id="liveOfficialClock">Loading Official Time...</span>
                     </div>
                 </div>
 
-                <!-- Right Spacer for perfect desktop balance -->
-                <div class="hidden md:block w-16 sm:w-20"></div>
+                <!-- Right Spacer for desktop symmetrical balance -->
+                <div class="hidden md:block w-24 sm:w-28"></div>
             </div>
         </div>
 
@@ -274,6 +315,7 @@
         </div>
     </footer>
 
+    <!-- Add/Edit Application Modal -->
     <div id="addPortalModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
         <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 text-slate-900 border border-slate-300">
             <div class="flex items-center justify-between pb-3 border-b border-slate-200">
@@ -338,6 +380,7 @@
         </div>
     </div>
 
+    <!-- Officer Passcode Modal -->
     <div id="loginModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
         <div class="bg-white rounded-xl shadow-2xl max-w-sm w-full p-6 text-slate-900 border border-slate-300">
             <div class="flex items-center justify-between pb-3 border-b border-slate-200">
@@ -376,9 +419,8 @@
         const DEFAULT_PORTALS = [
             {
                 id: "portal-1",
-                title: "APMS Web Portal & Math Marathon",
-                subtitle: "Student Practice, Daily Quizzes & Real-Time Merit Certificates",
-                url: "https://example.com/math-marathon",
+                title: "Self Defence-2026-27",
+                url: "https://rlarp-atp.github.io/Self-defense/",
                 category: "Student Practice",
                 status: "Active Official",
                 colorClass: "bg-amber-500 hover:bg-amber-600",
@@ -386,10 +428,11 @@
             },
             {
                 id: "portal-2",
-                title: "VIP Petitions & Grievance Redressal Tracking",
-                subtitle: "District Project Office ATRs & Monitoring Dashboard",
-                url: "https://example.com/grievances",
+                title: "Mission March-2027",
+                subtitle: "District  Monitoring Dashboard",
+                url: "https://misssion-march-2027-atp.github.io/SSC/",
                 category: "Administrative Dashboards",
+                dashboardUrl: "https://datastudio.google.com/reporting/8b24e2f9-c5f1-4555-804e-6d6536b26681",
                 status: "Confidential / Secure",
                 colorClass: "bg-indigo-600 hover:bg-indigo-700",
                 pillBg: "bg-indigo-100 text-indigo-900"
@@ -406,9 +449,9 @@
             },
             {
                 id: "portal-4",
-                title: "School Infrastructure & Nadu Nedu Monitor",
-                subtitle: "Asset Verification, Civil Works & Smart Classroom Audit",
-                url: "https://example.com/infrastructure",
+                title: "School Infrastructure & MBMB On Going Works",
+                subtitle: "Work Cloaser , Bills Uploading & Calling to HM",
+                url: "https://apssatp.github.io/MBMB-Phase-2/",
                 category: "Infrastructure",
                 status: "Active Official",
                 colorClass: "bg-sky-500 hover:bg-sky-600",
@@ -463,6 +506,25 @@
             isAdminLoggedIn = false;
         }
 
+        // Multi-Tier Resilient Logo Fallback Handler (Uses exact MD5 hash /9/9e/)
+        function handleLogoError(img) {
+            const fallbacks = [
+                'https://upload.wikimedia.org/wikipedia/commons/9/9e/Emblem_of_Andhra_Pradesh_before_2014.svg',
+                'https://commons.wikimedia.org/wiki/Special:FilePath/Emblem_of_Andhra_Pradesh_before_2014.svg?width=500',
+                'https://wsrv.nl/?url=upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Emblem_of_Andhra_Pradesh_before_2014.svg/500px-Emblem_of_Andhra_Pradesh_before_2014.svg.png'
+            ];
+            let idx = parseInt(img.dataset.fbIdx || '0', 10);
+            if (idx < fallbacks.length) {
+                img.dataset.fbIdx = String(idx + 1);
+                img.src = fallbacks[idx];
+                return;
+            }
+            img.onerror = null;
+            img.style.display = 'none';
+            const fallback = document.getElementById('apDetailedSvgFallback');
+            if (fallback) fallback.classList.remove('hidden');
+        }
+
         // Live Clock (IST)
         function updateOfficialClock() {
             const now = new Date();
@@ -478,7 +540,7 @@
             const seconds = String(now.getSeconds()).padStart(2, '0');
             const ampm = hours >= 12 ? 'PM' : 'AM';
             hours = hours % 12;
-            hours = hours ? hours : 12; // 0 becomes 12
+            hours = hours ? hours : 12;
             const strHours = String(hours).padStart(2, '0');
 
             const clockEl = document.getElementById('liveOfficialClock');
@@ -512,13 +574,11 @@
 
         function handleAuthAction() {
             if (isAdminLoggedIn) {
-                // Logout
                 isAdminLoggedIn = false;
                 localStorage.setItem('cse_admin_session', 'false');
                 updateAuthUI();
                 renderPortals();
             } else {
-                // Open Login Modal
                 document.getElementById('adminPasswordInput').value = '';
                 document.getElementById('loginErrorMsg').classList.add('hidden');
                 document.getElementById('loginModal').classList.remove('hidden');
@@ -601,7 +661,7 @@
             lucide.createIcons();
         }
 
-        // Portal Directory Cards Rendering (Strictly No Tag Pills)
+        // Portal Directory Cards Rendering
         function renderPortals() {
             const grid = document.getElementById('portalsGrid');
             if (!grid) return;
@@ -718,7 +778,6 @@
             }
 
             if (id) {
-                // Update existing
                 portals = portals.map(p => p.id === id ? {
                     ...p,
                     title,
@@ -728,7 +787,6 @@
                     colorClass
                 } : p);
             } else {
-                // Add new
                 const newPortal = {
                     id: 'portal-' + Date.now(),
                     title,
@@ -755,21 +813,6 @@
             renderCategories();
             renderQuickLinksSidebar();
             renderPortals();
-        }
-
-        function exportConfigJson() {
-            const data = {
-                title: "Department of School Education & Samagra Shiksha — Ananthapuramu District",
-                exportedAt: new Date().toISOString(),
-                portals
-            };
-            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'ananthapuramu-education-portals.json';
-            a.click();
-            URL.revokeObjectURL(url);
         }
 
         function toggleMobileMenu() {
