@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>Department of School Education & Samagra Shiksha — Ananthapuramu District</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-[#f8fafc] text-slate-800 flex flex-col selection:bg-amber-500 selection:text-white">
+
+    <header class="bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 py-3 sm:py-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                
+                <!-- Left: Official AP Government Emblem -->
+                <div class="flex items-center justify-center shrink-0">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center p-1 rounded-full bg-slate-50 border border-slate-200 shadow-sm">
+                        <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-sm">
+                            <circle cx="50" cy="50" r="47" fill="#fef08a" stroke="#15803d" stroke-width="2.5" />
+                            <circle cx="50" cy="50" r="42" fill="#ffffff" stroke="#ca8a04" stroke-width="1.5" stroke-dasharray="3 2" />
+                            <circle cx="50" cy="50" r="28" fill="#ecfdf5" stroke="#16a34a" stroke-width="1.5" />
+                            <path d="M50 24 L52 30 L58 30 L53 34 L55 40 L50 36 L45 40 L47 34 L42 30 L48 30 Z" fill="#ca8a04" />
+                            <path d="M40 55 C40 45, 60 45, 60 55 C60 62, 55 68, 50 68 C45 68, 40 62, 40 55 Z" fill="#15803d" />
+                            <circle cx="50" cy="54" r="5" fill="#ffffff" stroke="#1e3a8a" stroke-width="1" />
+                            <path id="curve" d="M 18,50 A 32,32 0 1,1 82,50" fill="none" />
+                            <text class="text-[7px] font-bold fill-emerald-800" text-anchor="middle">
+                                <textPath href="#curve" startOffset="50%">ఆంధ్రప్రదేశ్ ప్రభుత్వము</textPath>
+                            </text>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Center: Official Department Headings & Live Real-Time Clock -->
+                <div class="text-center flex-1">
+                    <p class="text-xs sm:text-sm font-semibold text-slate-600 tracking-wide uppercase">
+                        Government of Andhra Pradesh
+                    </p>
+                    <h1 class="text-lg sm:text-2xl lg:text-3xl font-extrabold text-[#1d5b96] tracking-tight leading-tight mt-0.5">
+                        Department of School Education &amp; Samagra Shiksha
+                    </h1>
+                    <p class="text-base sm:text-xl lg:text-2xl font-extrabold text-amber-600 tracking-wide mt-1">
+                        Ananthapuramu District
+                    </p>
+                    
+                    <!-- Official Real-time Digital Clock -->
+                    <div class="inline-flex items-center gap-2 mt-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-300 text-slate-700 text-xs font-semibold shadow-inner">
+                        <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-600 animate-pulse"></i>
+                        <span id="liveOfficialClock">Loading Official Time...</span>
+                    </div>
+                </div>
+
+                <!-- Right Spacer for perfect desktop balance -->
+                <div class="hidden md:block w-16 sm:w-20"></div>
+            </div>
+        </div>
+
+        <div class="bg-[#1f2937] text-white">
+            <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
+                <nav class="hidden lg:flex items-center space-x-1 text-xs font-semibold">
+                    <a href="#home" class="px-3.5 py-3 hover:bg-slate-700 transition">Home</a>
+                    <a href="#about" class="px-3.5 py-3 hover:bg-slate-700 transition flex items-center gap-1">About Us</a>
+                    <a href="#portals" class="px-3.5 py-3 hover:bg-slate-700 transition flex items-center gap-1">Applications &amp; Portals</a>
+                    <a href="#statistics" class="px-3.5 py-3 hover:bg-slate-700 transition">Statistics</a>
+                    <a href="#manabadi" class="px-3.5 py-3 hover:bg-slate-700 transition">Manabadi Magazine</a>
+                    <a href="#swarna" class="px-3.5 py-3 hover:bg-slate-700 transition">Swarna Andhra</a>
+                </nav>
+
+                <!-- Mobile menu toggle -->
+                <div class="lg:hidden py-2">
+                    <button onclick="toggleMobileMenu()" class="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800" aria-label="Toggle Navigation">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+
+                <!-- Auth Controls -->
+                <div class="flex items-center gap-2 py-1.5">
+                    <!-- Add App Button (Admin only) -->
+                    <button id="adminAddBtn" onclick="openAddPortalModal()" class="hidden items-center gap-1 px-3 py-1.5 rounded-md text-xs font-bold bg-amber-500 hover:bg-amber-600 text-slate-950 transition">
+                        <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                        <span>Add Web App</span>
+                    </button>
+
+                    <!-- Login / Logout Toggle -->
+                    <button id="authBtn" onclick="handleAuthAction()" class="px-4 py-1.5 rounded-md text-xs font-extrabold bg-[#22c55e] hover:bg-emerald-600 text-white shadow transition flex items-center gap-1.5">
+                        <i data-lucide="lock" class="w-3 h-3"></i>
+                        <span id="authBtnText">Officer Login</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-slate-800 text-slate-200 text-xs font-medium px-4 py-3 space-y-2 border-t border-slate-700">
+            <a href="#home" class="block py-1">Home</a>
+            <a href="#about" class="block py-1">About Department</a>
+            <a href="#portals" class="block py-1">Applications &amp; Portals</a>
+            <a href="#statistics" class="block py-1">District Statistics</a>
+            <a href="#manabadi" class="block py-1">Manabadi Magazine</a>
+        </div>
+    </header>
+
+    <div class="bg-amber-100 border-b border-amber-300 py-1.5 px-4 text-xs text-amber-900 font-semibold flex items-center overflow-hidden shadow-inner">
+        <span class="shrink-0 bg-rose-600 text-white font-black px-2 py-0.5 rounded text-[10px] mr-3 uppercase tracking-wider animate-pulse flex items-center gap-1">
+            <i data-lucide="bell" class="w-3 h-3"></i> Notice
+        </span>
+        <div class="truncate w-full font-medium" id="tickerNotice">
+            ★ AP Online Academic Portals 2026: Official directory of district applications, student assessments, and administrative monitoring portals for Ananthapuramu District.
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 py-6 w-full space-y-6 flex-1">
+
+        <!-- Top Section: Official Quick Links Bar -->
+        <section class="bg-white rounded-xl border border-slate-300 shadow-sm overflow-hidden">
+            <div class="bg-[#84cc16] text-white px-4 py-2.5 flex items-center justify-between font-extrabold text-sm sm:text-base tracking-wide">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="layers" class="w-4 h-4"></i>
+                    <span>Quick Access Portals</span>
+                </div>
+                <span id="quickLinksCount" class="text-xs bg-lime-800/40 px-2.5 py-0.5 rounded font-mono font-normal">
+                    0 Applications
+                </span>
+            </div>
+            <div class="p-3 sm:p-4">
+                <div id="quickLinksGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5">
+                    <!-- Rendered Dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <section id="portals" class="bg-white rounded-xl border border-slate-300 shadow-sm p-4 sm:p-6 space-y-5">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
+                <div>
+                    <h2 class="text-lg sm:text-xl font-black text-slate-900 flex items-center gap-2">
+                        <i data-lucide="layout-grid" class="w-5 h-5 text-[#1d5b96]"></i>
+                        <span>Web Applications &amp; Monitoring Portals Directory</span>
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-0.5">
+                        Centralized repository of digital tools and education portals for Ananthapuramu District.
+                    </p>
+                </div>
+
+                <!-- Search Input -->
+                <div class="relative w-full sm:w-72">
+                    <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="searchInput" oninput="handleSearch(event)" placeholder="Search portals or tools..." class="w-full pl-9 pr-3 py-2 text-xs sm:text-sm rounded-lg bg-slate-50 border border-slate-300 focus:border-[#1d5b96] focus:bg-white outline-none transition">
+                </div>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div id="categoryTabs" class="flex items-center gap-2 overflow-x-auto pb-1 text-xs">
+                <!-- Rendered Dynamically -->
+            </div>
+
+            <!-- Portals Cards Grid -->
+            <div id="portalsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Rendered Dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#1e293b] text-slate-300 text-xs border-t-4 border-amber-500 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>
+                <h4 class="font-extrabold text-white text-sm uppercase tracking-wider mb-2">
+                    Department of School Education
+                </h4>
+                <p class="text-slate-400 leading-relaxed">
+                    Samagra Shiksha, District Project Office, Ananthapuramu, Andhra Pradesh.
+                </p>
+                <p class="mt-2 text-amber-400 font-mono text-[11px]">
+                    Official Digital Hub &bull; All Apps Operational
+                </p>
+            </div>
+
+            <div>
+                <h4 class="font-extrabold text-white text-sm uppercase tracking-wider mb-2">
+                    Official Portals
+                </h4>
+                <ul class="space-y-1.5 text-slate-400">
+                    <li><a href="https://cse.ap.gov.in" target="_blank" rel="noopener noreferrer" class="hover:text-white flex items-center gap-1"><i data-lucide="chevron-right" class="w-3 h-3"></i> Commissioner of School Education (CSE AP)</a></li>
+                    <li><a href="https://scert.ap.gov.in" target="_blank" rel="noopener noreferrer" class="hover:text-white flex items-center gap-1"><i data-lucide="chevron-right" class="w-3 h-3"></i> AP SCERT Academic Materials</a></li>
+                    <li><a href="https://nadunedu.se.ap.gov.in" target="_blank" rel="noopener noreferrer" class="hover:text-white flex items-center gap-1"><i data-lucide="chevron-right" class="w-3 h-3"></i> Mana Badi Nadu Nedu Portal</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-extrabold text-white text-sm uppercase tracking-wider mb-2">
+                    Directory Utilities
+                </h4>
+                <button onclick="exportConfigJson()" class="px-3.5 py-2 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center gap-1.5 transition text-xs font-medium">
+                    <i data-lucide="download" class="w-3.5 h-3.5 text-amber-400"></i>
+                    <span>Export Portals JSON Backup</span>
+                </button>
+                <p class="text-[11px] text-slate-500">
+                    Compliant with AP Govt Web Standards. Secure HTTPS CDN hosting.
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-[#0f172a] py-3 px-4 text-center text-[11px] text-slate-400 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between max-w-7xl mx-auto">
+            <span>&copy; 2026 Government of Andhra Pradesh. Department of School Education.</span>
+            <span class="font-mono text-emerald-400 mt-1 sm:mt-0">NIC Compliant &bull; District Portal v5.0</span>
+        </div>
+    </footer>
+
+    <div id="addPortalModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+        <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 text-slate-900 border border-slate-300">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+                <h3 id="modalFormTitle" class="font-black text-base text-[#1d5b96] flex items-center gap-2">
+                    <i data-lucide="plus-circle" class="w-5 h-5 text-amber-500"></i>
+                    <span>Add New Web Application</span>
+                </h3>
+                <button onclick="closeAddPortalModal()" class="text-slate-400 hover:text-slate-700" aria-label="Close Modal">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <form id="portalForm" onsubmit="handleFormSubmit(event)" class="space-y-3.5 mt-4 text-xs sm:text-sm">
+                <input type="hidden" id="formPortalId" value="">
+
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Application Title *</label>
+                    <input type="text" id="formTitle" required placeholder="e.g., Mandal Mathematics League" class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:border-[#1d5b96] outline-none">
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Target URL (Website Link) *</label>
+                    <input type="text" id="formUrl" required placeholder="https://your-domain.edu.in" class="w-full px-3 py-2 rounded-lg border border-slate-300 font-mono text-xs focus:border-[#1d5b96] outline-none">
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Description / Subtitle</label>
+                    <input type="text" id="formSubtitle" placeholder="e.g., Daily student quizzes & merit generation" class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:border-[#1d5b96] outline-none">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Category</label>
+                        <select id="formCategory" class="w-full px-3 py-2 rounded-lg border border-slate-300 outline-none">
+                            <option value="Student Practice">Student Practice</option>
+                            <option value="Administrative Dashboards">Administrative Dashboards</option>
+                            <option value="Curriculum & Academics">Curriculum &amp; Academics</option>
+                            <option value="Infrastructure">Infrastructure</option>
+                            <option value="Examination Tools">Examination Tools</option>
+                            <option value="Welfare & Operations">Welfare &amp; Operations</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Quick Link Color Style</label>
+                        <select id="formColor" class="w-full px-3 py-2 rounded-lg border border-slate-300 outline-none">
+                            <option value="bg-amber-500 hover:bg-amber-600">Orange / Amber</option>
+                            <option value="bg-indigo-600 hover:bg-indigo-700">Indigo / Purple</option>
+                            <option value="bg-pink-600 hover:bg-pink-700">Pink / Magenta</option>
+                            <option value="bg-sky-500 hover:bg-sky-600">Sky Blue</option>
+                            <option value="bg-emerald-600 hover:bg-emerald-700">Emerald Green</option>
+                            <option value="bg-slate-600 hover:bg-slate-700">Slate Grey</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-2 pt-3 border-t border-slate-200">
+                    <button type="button" onclick="closeAddPortalModal()" class="px-4 py-2 rounded-lg text-slate-600 hover:bg-slate-100 font-medium">Cancel</button>
+                    <button type="submit" class="px-5 py-2 rounded-lg font-bold bg-[#1d5b96] hover:bg-blue-800 text-white shadow">Save to Directory</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="loginModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+        <div class="bg-white rounded-xl shadow-2xl max-w-sm w-full p-6 text-slate-900 border border-slate-300">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+                <h3 class="font-black text-base text-[#1d5b96] flex items-center gap-2">
+                    <i data-lucide="shield-check" class="w-5 h-5 text-emerald-600"></i>
+                    <span>Officer Authentication</span>
+                </h3>
+                <button onclick="closeLoginModal()" class="text-slate-400 hover:text-slate-700" aria-label="Close Modal">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <form onsubmit="handleLoginSubmit(event)" class="space-y-4 mt-4 text-xs sm:text-sm">
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Administrative Passcode</label>
+                    <input type="password" id="adminPasswordInput" required placeholder="Enter passcode" class="w-full px-3 py-2 rounded-lg border border-slate-300 focus:border-[#1d5b96] outline-none font-mono">
+                    <p class="text-[11px] text-slate-500 mt-1">Default passcode: <code class="font-bold bg-slate-100 px-1 py-0.5 rounded">admin123</code></p>
+                </div>
+
+                <div id="loginErrorMsg" class="hidden text-xs text-rose-600 font-bold bg-rose-50 border border-rose-200 p-2 rounded">
+                    Incorrect passcode. Please try again.
+                </div>
+
+                <div class="flex justify-end gap-2 pt-2 border-t border-slate-200">
+                    <button type="button" onclick="closeLoginModal()" class="px-4 py-2 rounded-lg text-slate-600 hover:bg-slate-100 font-medium">Cancel</button>
+                    <button type="submit" class="px-5 py-2 rounded-lg font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow">Authorize</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const DEFAULT_PORTALS = [
+            {
+                id: "portal-1",
+                title: "APMS Web Portal & Math Marathon",
+                subtitle: "Student Practice, Daily Quizzes & Real-Time Merit Certificates",
+                url: "https://example.com/math-marathon",
+                category: "Student Practice",
+                status: "Active Official",
+                colorClass: "bg-amber-500 hover:bg-amber-600",
+                pillBg: "bg-amber-100 text-amber-900"
+            },
+            {
+                id: "portal-2",
+                title: "VIP Petitions & Grievance Redressal Tracking",
+                subtitle: "District Project Office ATRs & Monitoring Dashboard",
+                url: "https://example.com/grievances",
+                category: "Administrative Dashboards",
+                status: "Confidential / Secure",
+                colorClass: "bg-indigo-600 hover:bg-indigo-700",
+                pillBg: "bg-indigo-100 text-indigo-900"
+            },
+            {
+                id: "portal-3",
+                title: "Academic Calendar & Teacher Diary",
+                subtitle: "Mandal & School Level Schedules & Lesson Plan Archives",
+                url: "https://example.com/academic-calendar",
+                category: "Curriculum & Academics",
+                status: "Verified",
+                colorClass: "bg-pink-600 hover:bg-pink-700",
+                pillBg: "bg-pink-100 text-pink-900"
+            },
+            {
+                id: "portal-4",
+                title: "School Infrastructure & Nadu Nedu Monitor",
+                subtitle: "Asset Verification, Civil Works & Smart Classroom Audit",
+                url: "https://example.com/infrastructure",
+                category: "Infrastructure",
+                status: "Active Official",
+                colorClass: "bg-sky-500 hover:bg-sky-600",
+                pillBg: "bg-sky-100 text-sky-900"
+            },
+            {
+                id: "portal-5",
+                title: "Directorate of Govt. Examinations (DGE SSC Tools)",
+                subtitle: "Class 10 Blueprint, Model Papers & Marks Estimation Engine",
+                url: "https://example.com/dge-ssc",
+                category: "Examination Tools",
+                status: "High Priority",
+                colorClass: "bg-slate-600 hover:bg-slate-700",
+                pillBg: "bg-slate-100 text-slate-800"
+            },
+            {
+                id: "portal-6",
+                title: "School Games Federation (SGF) District Portal",
+                subtitle: "Sports Meet Entries, Athlete Certificates & Medal Tallies",
+                url: "https://example.com/sgf-sports",
+                category: "Student Practice",
+                status: "Active",
+                colorClass: "bg-emerald-600 hover:bg-emerald-700",
+                pillBg: "bg-emerald-100 text-emerald-900"
+            },
+            {
+                id: "portal-7",
+                title: "Mid-Day Meal (MDM) Attendance & Menu Audit",
+                subtitle: "Daily Inspection Forms, Diet Schedules & Balance Sheets",
+                url: "https://example.com/mid-day-meal",
+                category: "Welfare & Operations",
+                status: "Operational",
+                colorClass: "bg-amber-600 hover:bg-amber-700",
+                pillBg: "bg-amber-100 text-amber-900"
+            }
+        ];
+
+        // Persistent Application State
+        let portals = [];
+        let selectedCategory = 'All';
+        let searchQuery = '';
+        let isAdminLoggedIn = false;
+
+        // Initialize from localStorage safely
+        try {
+            const savedPortals = localStorage.getItem('cse_html_portals_v1');
+            portals = savedPortals ? JSON.parse(savedPortals) : DEFAULT_PORTALS;
+            isAdminLoggedIn = localStorage.getItem('cse_admin_session') === 'true';
+        } catch (e) {
+            console.error('Failed to load portals from storage:', e);
+            portals = DEFAULT_PORTALS;
+            isAdminLoggedIn = false;
+        }
+
+        // Live Clock (IST)
+        function updateOfficialClock() {
+            const now = new Date();
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const dayName = days[now.getDay()];
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const monthName = months[now.getMonth()];
+            const date = String(now.getDate()).padStart(2, '0');
+            const year = now.getFullYear();
+
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // 0 becomes 12
+            const strHours = String(hours).padStart(2, '0');
+
+            const clockEl = document.getElementById('liveOfficialClock');
+            if (clockEl) {
+                clockEl.textContent = `${dayName}, ${date} ${monthName} ${year} | ${strHours}:${minutes}:${seconds} ${ampm} IST`;
+            }
+        }
+
+        // Authentication Handlers
+        function updateAuthUI() {
+            const adminAddBtn = document.getElementById('adminAddBtn');
+            const authBtn = document.getElementById('authBtn');
+            const authBtnText = document.getElementById('authBtnText');
+
+            if (isAdminLoggedIn) {
+                if (adminAddBtn) adminAddBtn.classList.remove('hidden');
+                if (adminAddBtn) adminAddBtn.classList.add('inline-flex');
+                if (authBtn) {
+                    authBtn.className = "px-4 py-1.5 rounded-md text-xs font-extrabold bg-rose-600 hover:bg-rose-700 text-white shadow transition flex items-center gap-1.5";
+                }
+                if (authBtnText) authBtnText.textContent = "Officer Logout";
+            } else {
+                if (adminAddBtn) adminAddBtn.classList.add('hidden');
+                if (adminAddBtn) adminAddBtn.classList.remove('inline-flex');
+                if (authBtn) {
+                    authBtn.className = "px-4 py-1.5 rounded-md text-xs font-extrabold bg-[#22c55e] hover:bg-emerald-600 text-white shadow transition flex items-center gap-1.5";
+                }
+                if (authBtnText) authBtnText.textContent = "Officer Login";
+            }
+        }
+
+        function handleAuthAction() {
+            if (isAdminLoggedIn) {
+                // Logout
+                isAdminLoggedIn = false;
+                localStorage.setItem('cse_admin_session', 'false');
+                updateAuthUI();
+                renderPortals();
+            } else {
+                // Open Login Modal
+                document.getElementById('adminPasswordInput').value = '';
+                document.getElementById('loginErrorMsg').classList.add('hidden');
+                document.getElementById('loginModal').classList.remove('hidden');
+                setTimeout(() => {
+                    document.getElementById('adminPasswordInput').focus();
+                }, 100);
+            }
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.add('hidden');
+        }
+
+        function handleLoginSubmit(e) {
+            e.preventDefault();
+            const entered = document.getElementById('adminPasswordInput').value;
+            if (entered === 'admin123') {
+                isAdminLoggedIn = true;
+                localStorage.setItem('cse_admin_session', 'true');
+                closeLoginModal();
+                updateAuthUI();
+                renderPortals();
+            } else {
+                document.getElementById('loginErrorMsg').classList.remove('hidden');
+            }
+        }
+
+        // Category Rendering
+        function renderCategories() {
+            const rawCategories = portals.map(p => p.category).filter(Boolean);
+            const distinctCategories = ['All', ...Array.from(new Set(rawCategories))];
+
+            const tabsContainer = document.getElementById('categoryTabs');
+            if (!tabsContainer) return;
+
+            tabsContainer.innerHTML = distinctCategories.map(cat => {
+                const isActive = selectedCategory === cat;
+                return `
+                    <button onclick="setCategory('${cat}')"
+                            class="px-3 py-1.5 rounded-lg font-bold whitespace-nowrap transition cursor-pointer ${
+                                isActive 
+                                    ? 'bg-[#1d5b96] text-white shadow-sm' 
+                                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
+                            }">
+                        ${cat}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function setCategory(cat) {
+            selectedCategory = cat;
+            renderCategories();
+            renderPortals();
+        }
+
+        function handleSearch(e) {
+            searchQuery = e.target.value.toLowerCase().trim();
+            renderPortals();
+        }
+
+        // Quick Links Section Rendering
+        function renderQuickLinksSidebar() {
+            const container = document.getElementById('quickLinksGrid');
+            const countBadge = document.getElementById('quickLinksCount');
+            if (countBadge) countBadge.textContent = `${portals.length} Applications`;
+            if (!container) return;
+
+            container.innerHTML = portals.slice(0, 8).map(portal => `
+                <a href="${portal.url}" target="_blank" rel="noopener noreferrer"
+                   class="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-white text-xs font-bold shadow-sm transition-all transform hover:-translate-y-0.5 active:translate-y-0 ${portal.colorClass || 'bg-blue-600 hover:bg-blue-700'}">
+                    <div class="flex items-center gap-2 truncate">
+                        <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0 opacity-80"></i>
+                        <span class="truncate">${portal.title}</span>
+                    </div>
+                    <i data-lucide="chevron-right" class="w-3.5 h-3.5 shrink-0 opacity-70"></i>
+                </a>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        // Portal Directory Cards Rendering (Strictly No Tag Pills)
+        function renderPortals() {
+            const grid = document.getElementById('portalsGrid');
+            if (!grid) return;
+
+            const filtered = portals.filter(p => {
+                const matchesCategory = selectedCategory === 'All' || p.category === selectedCategory;
+                const matchesSearch = !searchQuery || 
+                    (p.title && p.title.toLowerCase().includes(searchQuery)) ||
+                    (p.subtitle && p.subtitle.toLowerCase().includes(searchQuery)) ||
+                    (p.category && p.category.toLowerCase().includes(searchQuery));
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-slate-500">
+                        <i data-lucide="info" class="w-10 h-10 mx-auto mb-2 text-slate-400"></i>
+                        <p class="font-bold text-sm">No web applications found.</p>
+                        <p class="text-xs mt-1">Try another keyword or select "All" categories.</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            grid.innerHTML = filtered.map(p => `
+                <div class="rounded-xl border border-slate-200 bg-white hover:border-[#1d5b96] hover:shadow-md transition flex flex-col justify-between overflow-hidden group">
+                    <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="p-4 sm:p-5 space-y-3 block flex-1">
+                        <div class="flex items-start justify-between gap-2">
+                            <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full ${p.pillBg || 'bg-slate-100 text-slate-800'}">
+                                ${p.category}
+                            </span>
+                            <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold flex items-center gap-1">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 text-emerald-600"></i>
+                                <span>${p.status || 'Active Official'}</span>
+                            </span>
+                        </div>
+
+                        <div>
+                            <h3 class="font-extrabold text-sm sm:text-base text-slate-900 group-hover:text-[#1d5b96] transition flex items-center justify-between gap-1">
+                                <span>${p.title}</span>
+                                <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-400 group-hover:text-[#1d5b96] opacity-0 group-hover:opacity-100 transition shrink-0"></i>
+                            </h3>
+                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                ${p.subtitle || 'District Education Digital Application'}
+                            </p>
+                        </div>
+                    </a>
+
+                    ${isAdminLoggedIn ? `
+                    <div class="bg-slate-50 border-t border-slate-200 px-4 py-2 flex items-center justify-between text-xs">
+                        <span class="text-[11px] font-mono text-slate-500 truncate max-w-[200px]">${p.url}</span>
+                        <div class="flex items-center gap-1">
+                            <button onclick="editPortal('${p.id}')" class="p-1.5 rounded hover:bg-slate-200 text-slate-600 transition" title="Edit portal">
+                                <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+                            </button>
+                            <button onclick="deletePortal('${p.id}')" class="p-1.5 rounded hover:bg-rose-100 text-rose-600 transition" title="Delete portal">
+                                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                            </button>
+                        </div>
+                    </div>` : ''}
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        // Modal Controls
+        function openAddPortalModal() {
+            document.getElementById('modalFormTitle').innerHTML = '<i data-lucide="plus-circle" class="w-5 h-5 text-amber-500 mr-2"></i><span>Add New Web Application</span>';
+            document.getElementById('formPortalId').value = '';
+            document.getElementById('formTitle').value = '';
+            document.getElementById('formUrl').value = 'https://';
+            document.getElementById('formSubtitle').value = '';
+            document.getElementById('formCategory').value = 'Student Practice';
+            document.getElementById('formColor').value = 'bg-amber-500 hover:bg-amber-600';
+            document.getElementById('addPortalModal').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closeAddPortalModal() {
+            document.getElementById('addPortalModal').classList.add('hidden');
+        }
+
+        function editPortal(id) {
+            const p = portals.find(item => item.id === id);
+            if (!p) return;
+
+            document.getElementById('modalFormTitle').innerHTML = '<i data-lucide="edit-3" class="w-5 h-5 text-amber-500 mr-2"></i><span>Edit Web Application</span>';
+            document.getElementById('formPortalId').value = p.id;
+            document.getElementById('formTitle').value = p.title;
+            document.getElementById('formUrl').value = p.url;
+            document.getElementById('formSubtitle').value = p.subtitle || '';
+            document.getElementById('formCategory').value = p.category || 'Student Practice';
+            document.getElementById('formColor').value = p.colorClass || 'bg-indigo-600 hover:bg-indigo-700';
+
+            document.getElementById('addPortalModal').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const id = document.getElementById('formPortalId').value;
+            const title = document.getElementById('formTitle').value.trim();
+            let url = document.getElementById('formUrl').value.trim();
+            const subtitle = document.getElementById('formSubtitle').value.trim();
+            const category = document.getElementById('formCategory').value;
+            const colorClass = document.getElementById('formColor').value;
+
+            if (!title || !url) return;
+
+            if (!/^https?:\/\//i.test(url)) {
+                url = 'https://' + url;
+            }
+
+            if (id) {
+                // Update existing
+                portals = portals.map(p => p.id === id ? {
+                    ...p,
+                    title,
+                    url,
+                    subtitle,
+                    category,
+                    colorClass
+                } : p);
+            } else {
+                // Add new
+                const newPortal = {
+                    id: 'portal-' + Date.now(),
+                    title,
+                    url,
+                    subtitle,
+                    category,
+                    status: 'Active Official',
+                    colorClass,
+                    pillBg: 'bg-blue-100 text-blue-900'
+                };
+                portals.unshift(newPortal);
+            }
+
+            localStorage.setItem('cse_html_portals_v1', JSON.stringify(portals));
+            closeAddPortalModal();
+            renderCategories();
+            renderQuickLinksSidebar();
+            renderPortals();
+        }
+
+        function deletePortal(id) {
+            portals = portals.filter(p => p.id !== id);
+            localStorage.setItem('cse_html_portals_v1', JSON.stringify(portals));
+            renderCategories();
+            renderQuickLinksSidebar();
+            renderPortals();
+        }
+
+        function exportConfigJson() {
+            const data = {
+                title: "Department of School Education & Samagra Shiksha — Ananthapuramu District",
+                exportedAt: new Date().toISOString(),
+                portals
+            };
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'ananthapuramu-education-portals.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            if (menu) menu.classList.toggle('hidden');
+        }
+
+        // Initialize application on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            updateOfficialClock();
+            setInterval(updateOfficialClock, 1000);
+            updateAuthUI();
+            renderCategories();
+            renderQuickLinksSidebar();
+            renderPortals();
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
